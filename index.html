@@ -1,0 +1,155 @@
+<html>
+    <style>
+        #server_list .header_total {
+	font-weight: bold;
+}
+
+#server_list table {
+	max-width: 100%;
+	width: 100%;
+	background-color: transparent;
+	border-collapse: collapse;
+	border-spacing: 0;
+	font-size: small;
+}
+
+#server_list td, #server_list th {
+	border: 1px solid #2A3132;
+	padding: 5px;
+	color: inherit;
+}
+
+#server_list thead {
+	background-color: #2A3132;
+	border-bottom: 5px solid #336B87;
+	color: white;
+	font-size: 1.1em;
+}
+
+#server_list tbody tr:nth-child(even) {
+	background-color: #E0E0E0;
+}
+
+#server_list td.clients, #server_list td.uptime, #server_list td.ping {
+	text-align: center;
+}
+
+#server_list td.version, #server_list td.name, #server_list td.description {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+/* Note: the column widths here are not exact as auto-layout is left enabled */
+
+#server_list td.address {
+	max-width: 24ch;
+}
+#server_list td.version {
+	max-width: 16ch;
+}
+#server_list td.name {
+	max-width: 32ch;
+}
+#server_list td.description {
+	max-width: 64ch;
+}
+
+.mts_hover_list {
+	display: none;
+	border: 1px solid #336B87;
+	border-radius: 10px;
+	background-color: #FFF;
+	position: absolute;
+	z-index: 100;
+	padding: 0.5em;
+	box-shadow: 1px 1px 5px 3px rgba(0, 0, 0, 0.25);
+}
+
+.mts_hover_list b {
+	font-size: 1.1em;
+}
+
+td:hover .mts_hover_list {
+	display: block;
+}
+
+.mts_cwidth {
+	display: inline-block;
+}
+
+    </style>
+<head>
+    <meta charset="utf-8">
+    <title>Minetest server list</title>
+    <style>
+        body {
+            font-family: Roboto, Ubuntu, "Segoe UI", sans;
+        }
+
+        a {
+            color: #336B87;
+        }
+
+        a:visited {
+            color: #336BA1;
+        }
+
+        @media only screen and (max-width: 1024px) {
+
+            #server_list table .version,
+            #server_list table .flags,
+            #server_list table .uptime {
+                display: none;
+            }
+        }
+    </style>
+    <script>
+        var master = { show_proto_select: true };
+    </script>
+</head>
+
+<body>
+    <div id="server_list">
+        <div><span class="header_total">Players: null/null&nbsp;Servers: 1/1</span>, Protocol: <select
+                class="proto_select">
+                <option value="">All</option>
+                <option value="[11,32]">11-32 (Minetest 0.4)</option>
+                <option value="[37,99]">37+ (Minetest 5.x)</option>
+            </select></div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Address[:Port]</th>
+                    <th>Players / Max<br>Average / Top</th>
+                    <th class="version">Version, Subgame[, Mapgen]</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th class="flags">Flags</th>
+                    <th class="uptime">Uptime, Age</th>
+                    <th>Ping, Lag</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="address"><span>waterworld.artof.land</span></td>
+                    <td class="clients"><span class="mts_cwidth" style="width:3.4em;">∞/∞</span> <span
+                            class="mts_cwidth" style="width:3.4em;">NaN/∞</span></td>
+                    <td class="version">5.5.0, ArtOf.Land</td>
+                    <td class="name"><a href="https://artof.land"><span title="Waterworld - Metaverse">Waterworld -
+                                Metaverse</span></a></td>
+                    <td class="description"><span title="Waterworld - Metaverse">Waterworld - Metaverse</span></td>
+                    <td class="flags ">Cre Pwd </td>
+                    <td class="uptime"><span class="mts_cwidth" style="width:3.2em;">1d</span> / <span
+                            class="mts_cwidth" style="width:3.2em;">2.7y</span></td>
+                    <td class="ping"><span class="mts_cwidth" style="width:1.8em;">0</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="list.js"></script>
+
+
+</body>
+
+</html>
